@@ -8,14 +8,18 @@
         <%= link_to("edit", "/users/#{@user.id}/edit") %>
       <% end %>
     </div>
+
     <ul class="user-tabs">
-      <li class="active"><%= link_to("post", "/users/#{@user.id}") %></li>
-      <li><%= link_to("fav", "/users/#{@user.id}/likes") %></li>
+      <li><%= link_to("post", "/users/#{@user.id}") %></li>
+      <li class="active"><%= link_to("fav", "/users/#{@user.id}/likes") %></li>
     </ul>
-    <% @user.posts.each do |post| %>
-       <div class="posts-index-item">
+
+    <% @likes.each do |like| %>
+      <% post = Post.find_by(id: like.post_id) %>
+
+      <div class="posts-index-item">
         <div class="post-left">
-          <%= gravatar_post_for post.user %>
+          <%= gravatar_for post.user %>
         </div>
         <div class="post-right">
           <div class="post-user-name">
@@ -25,5 +29,7 @@
         </div>
       </div>
     <% end %>
+    <% %>
   </div>
 </div>
+
