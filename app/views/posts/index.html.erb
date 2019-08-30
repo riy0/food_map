@@ -8,8 +8,11 @@
         <div class="post-right">
           <%= link_to(post.user.name, "/users/#{post.user.id}") %>
         </div>
-        <%= link_to(post.content, "/posts/#{post.id}") %>
-        <img src="<%= "#{post.photo}" %>">
+        <div class="post-photo"
+          <a href="<%= "/posts/#{post.id}" %>">
+            <img src="<%= "#{post.picture}" %>">
+          </a>
+        </div>
       </div>
     <% end %>
   </div>

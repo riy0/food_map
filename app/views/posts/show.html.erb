@@ -5,6 +5,9 @@
         <%= gravatar_post_for @user %>
         <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
+      <div class="food_name">
+          <%= @post.food_name %>
+      </div>
       <p> <%= @post.content %> </p>
       <div>
         <%= image_tag @post.photo.url if @post.photo? %>
@@ -32,6 +35,48 @@
 
       <%= @likes_count %>
 
+      <div class="evaluation-show">
+        <label id="star1">★</label>
+        <label id="star2">★</label>
+        <label id="star3">★</label>
+        <label id="star4">★</label>
+        <label id="star5">★</label>
+      </div>
     </div>
   </div>
 </div>
+
+<script> 
+function starNum(){
+  star1 = document.getElementById("star1");
+  star2 = document.getElementById("star2");
+  star3 = document.getElementById("star3");
+  star4 = document.getElementById("star4");
+  star5 = document.getElementById("star5");
+
+  if(<%= @post.star %> == 1){
+    star5.style.color = "#ffcc00";
+  }else if (<%= @post.star %> == 2) {
+    star5.style.color = "#ffcc00";
+    star4.style.color = "#ffcc00";
+  }else if (<%= @post.star %> == 3) {
+    star5.style.color = "#ffcc00";
+    star4.style.color = "#ffcc00";
+    star3.style.color = "#ffcc00";
+  }else if (<%= @post.star %> == 4) {
+    star5.style.color = "#ffcc00";
+    star4.style.color = "#ffcc00";
+    star3.style.color = "#ffcc00";
+    star2.style.color = "#ffcc00";
+  }else if (<%= @post.star %> == 5) {
+    star5.style.color = "#ffcc00";
+    star4.style.color = "#ffcc00";
+    star3.style.color = "#ffcc00";
+    star2.style.color = "#ffcc00";
+    star1.style.color = "#ffcc00";
+  }
+}
+
+starNum()
+</script>
+

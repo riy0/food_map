@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(content: params[:content], user_id: @current_user.id, photo: params[:photo])
+    @post = Post.new(content: params[:content], user_id: @current_user.id, photo: params[:photo], star: params[:start], food_name: params[:food_name])
 
     if @post.save
       flash[:notice] = "post created"
@@ -34,6 +34,9 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(id: params[:id])
     @post.content = params[:content]
+    @post.photo= params[:photo ]
+    @post.star= params[:star]
+    @post.food_name= params[:food_name]
 
     if @post.save
       flash[:notice] = "edit #{@post.content}"
