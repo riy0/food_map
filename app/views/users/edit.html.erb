@@ -9,11 +9,14 @@
               <%= message %>
             </div>
           <% end %>
-          <p>user name</p>
-          <input name="name" value="<%= @user.name %>">
-          <p>email</p>
-          <input name="email" value="<%= @user.email %>">
-          <input type="submit" value="save">
+
+          <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+            <p>user name</p>
+            <input name="name" value="<%= @user.name %>">
+            <p>email</p>
+            <input name="email" value="<%= @user.email %>">
+            <input type="submit" value="save">
+          <%= end %>
         </div>
       <% end %>
     </div>

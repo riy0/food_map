@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @posts = Post.all.order(created_at: :desc)
   end
@@ -7,8 +9,17 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
+
+  def show
+    @post = Post.find_by(id: params[:id])
+    @user = Post.find_by(id: @post.user_id)
+  end
+
   def create
-    @post = Post.new(content: params[:content])
+    @post = Post.new(content: params[:content], user_id: @current_user.id)
 
     if @post.save
       flash[:notice] = "post created"
@@ -16,14 +27,6 @@ class PostsController < ApplicationController
     else
       render("/posts/new")
     end
-  end
-
-  def edit
-    @post = Post.find_by(id: params[:id])
-  end
-
-  def show
-    @post = Post.find_by(id: params[:id])
   end
 
   def update
