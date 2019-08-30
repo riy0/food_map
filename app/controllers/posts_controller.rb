@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(content: params[:content], user_id: @current_user.id)
+    @post = Post.new(content: params[:content], user_id: @current_user.id, photo: params[:photo])
 
     if @post.save
       flash[:notice] = "post created"
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     @post.content = params[:content]
 
     if @post.save
-      flash[:notice] = "edit #{post.content}"
+      flash[:notice] = "edit #{@post.content}"
       redirect_to("/posts/index")
     else
       render("/posts/edit")
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   def confirm_user
     @post = Post.find_by(id: params[:id])
     if @post.user_id != @current_user.id
-      flash[:notice] = "権限がありません"
+      flash[:notice] = "unauthorized"
       redirect_to("/posts/index")
     end
   end

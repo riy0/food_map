@@ -9,6 +9,7 @@
           <%= link_to(post.user.name, "/users/#{post.user.id}") %>
         </div>
         <%= link_to(post.content, "/posts/#{post.id}") %>
+        <img src="<%= "#{post.photo}" %>">
       </div>
     <% end %>
   </div>

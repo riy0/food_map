@@ -1,20 +1,19 @@
 <div class="main posts-new">
   <div class="container">
-    <h1 class="form-heading">edit</h1>
-    <%= form_tag("/posts/#{@post.id}/update") do %>
+    <h1 class="form-heading">post</h1>
     <div class="form">
       <div class="form-body">
         <% @post.errors.full_messages.each do |message| %>
           <div class="form-error">
             <%= message %>
           </div>
-        <%= end %>
-        <textarea name="content"><%= @post.content %></textarea>
-        <input type="photo" type="file">
-        <input type="submit" value="save">
+          <% end %>
+          <%= form_tag("/posts/create") do %>
+            <textarea name="content"></textarea>
+            <input name="photo" type="file">
+            <input type="submit" value="post">
+          <% end %>
       </div>
     </div>
-    <% end %>
   </div>
 </div>
-

@@ -3,8 +3,9 @@
     <h1 class="form-heading">post</h1>
     <div class="form">
       <div class="form-body">
-        <%= form_tag("/posts/create") do %>
-          <textarea name="content"></textarea>
+          <%= form_tag("/posts/create", {multipart: true}) do %>
+            <textarea name="content"></textarea>
+          <input name="photo" type="file">
           <input type="submit" value="post">
         <% end %>
       </div>
