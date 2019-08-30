@@ -53,13 +53,13 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(email: params[:email], password: params[:password])
-    if @user
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:notice] = "ログインしました"
+      flash[:notice] = "login"
       redirect_to("/posts/index")
     else
-      @error_message = "メールまたはパスワードが間違っています"
+      @error_message = "wrong mail or password"
       @email = params[:email]
       @password = params[:password]
       render("users/login_form")
@@ -68,13 +68,13 @@ class UsersController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    flash[:notice] = "ログアウトしました"
+    flash[:notice] = "logout"
     redirect_to("/login")
   end
 
   def ensure_correct_user
     if @current_user.id != params[:id].to_i
-      flash[:notice] = "権限がありません"
+      flash[:notice] = "unauthorized"
       redirect_to("/posts/index")
     end
   end
