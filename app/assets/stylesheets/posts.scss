@@ -1,3 +1,68 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* posts index */
+.posts-index-item {
+  padding: 20px 25px;
+  background-color:white;
+  box-shadow: 0 2px 4px black;
+}
+.post-left {
+  float: left;
+  width: 15%;
+}
+
+.post-right {
+  float: left;
+  width: 85%;
+  text-align: left;
+}
+
+.post-left img {
+  width: 40px;
+  height: 40px;
+  border-radius: 40%;
+  box-shadow: 0 2px 4px black;
+  object-fit: cover;
+}
+
+.post-user-name a:hover {
+  color: #3ecdc6;
+}
+
+/* posts show*/
+.posts-show form {
+  display: inline;
+}
+
+.posts-show-item {
+  padding: 30px;
+  box-shadow: 0 2px 4px black;
+  overflow: hidden;
+}
+
+.post-time {
+  color: #8899a6;
+  margin-bottom: 10px;
+}
+
+.post-menus {
+  float: right;
+}
+
+.posts-new textarea {
+  font-size: 20px;
+  padding: 10px;
+  min-height: 140px;
+  border: 1px solid rgb(216, 218, 223);
+  resize: none;
+}
+
+.posts-new textarea::-webkit-input-placeholder {
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+  
+
