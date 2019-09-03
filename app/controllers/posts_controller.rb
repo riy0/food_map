@@ -21,7 +21,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(content: params[:content], user_id: @current_user.id, photo: params[:photo], star: params[:start], food_name: params[:food_name])
+    @post = Post.new(
+        content: params[:content],
+        user_id: @current_user.id,
+        photo: params[:photo],
+        star: params[:start],
+        food_name: params[:food_name],
+        address: params[:address]
+    )
 
     if @post.save
       flash[:notice] = "post created"

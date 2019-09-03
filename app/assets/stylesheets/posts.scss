@@ -26,6 +26,11 @@
   text-align: left;
 }
 
+.post-right-name a {
+  padding-left: 15px;
+  font-size: 18px;
+}
+
 .post-user-name a {
   font-weight: 500;
 }
@@ -33,6 +38,44 @@
 .post-user-name a:hover {
   color: #3ecdc6;
 }
+
+.container-posts-index {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.container-posts-index {
+  padding-left: 15px;
+  padding-right: 15px;
+  clear: both;
+}
+
+.posts-index-items {
+  width: 380px;
+  height: 500px;
+  padding: 20px 30px;
+  margin: 3%;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.post-photo{
+  text-align: center;
+}
+
+.post-photo img{
+  margin-top: 10px ;
+  padding: 0 auto;
+  width: 300px;
+  height: 300px;
+}
+
+.food-name a {
+  font-size: 28px;
+}
+
 
 /* posts show */
 .posts-show form {
@@ -81,16 +124,58 @@
   font-size: 14px;
 }
 
+.post-food-pic img{
+  margin-top: 20px;
+  width: 500px;
+  height: 400px;
+  border-radius: 3%;
+}
+
+.post-food-pic {
+  text-align: center;
+}
+
+.food-name {
+  margin-top: 10px;
+  text-align: center;
+}
+
 /* fav */
-.like-btn{
+.like-btn {
   color: #8899a6;
 }
 
-.like-btn-unlike{
+.like-btn-unlike {
   color: #ff2581;
 }
 
 .posts-show-item .fa {
   font-size: 16px;
   margin-right: 3px;
+}
+
+/* star evaluation */
+.evaluation {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+
+.evaluation label {
+  position: relative;
+  padding: 10px 10px 0;
+  color: black;
+  font-size: 25px;
+}
+
+.evaluation-show{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+.evaluation-show label{
+  position: relative;
+  padding: 10px 10px 0;
+  color: gray;
+  font-size: 30px;
 }
