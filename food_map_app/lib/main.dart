@@ -3,23 +3,25 @@ import 'package:provider/provider.dart';
 
 import './providers/nice_places.dart';
 import './screens/places_list_screen.dart';
+import './screens/add_place_screen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
-      value: GreatPlaces(),
+      value: NicePlaces(),
       child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.lightBlue,
-          accentColor: Colors.indigo,
-        ),
-        home: PlacesListScreen(),
-      ),
+          title: 'Food Map',
+          theme: ThemeData(
+            primarySwatch: Colors.lightBlue,
+            accentColor: Colors.amber,
+          ),
+          home: PlacesListScreen(),
+          routes: {
+            AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
+          }),
     );
   }
 }
