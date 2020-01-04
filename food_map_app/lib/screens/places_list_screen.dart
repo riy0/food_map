@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import './add_place_screen.dart';
 import '../providers/nice_places.dart';
+import './place_detail_screen.dart';
 
 class PlacesListScreen extends StatelessWidget {
   @override
@@ -42,7 +43,13 @@ class PlacesListScreen extends StatelessWidget {
                             ),
                           ),
                           title: Text(nicePlaces.items[i].title),
-                          onTap: () {},
+                          subtitle: Text(nicePlaces.items[i].location.address),
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                              PlaceDetailScreen.routeName,
+                              arguments: nicePlaces.items[i].id,
+                            );
+                          },
                         ),
                       ),
               ),
