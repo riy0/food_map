@@ -5,7 +5,7 @@ ruby '2.6.0'
 
 gem 'rails', '~> 5.2.3'
 gem 'sqlite3'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12.2'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -19,6 +19,9 @@ gem 'fog'
 gem 'carrierwave'
 gem 'geocoder'
 gem "rack", ">= 2.0.8"
+gem "excon", ">= 0.71.0"
+gem "loofah", ">= 2.3.1"
+gem "rubyzip", ">= 1.3.0"
  
  
 group :development, :test do
