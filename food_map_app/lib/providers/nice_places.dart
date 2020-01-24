@@ -1,8 +1,9 @@
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 
 import '../models/place.dart';
-import '../helpers/db_helpers.dart';
+import '../helpers/db_helper.dart';
 import '../helpers/location_helper.dart';
 
 class NicePlaces with ChangeNotifier {
@@ -16,7 +17,7 @@ class NicePlaces with ChangeNotifier {
     return _items.firstWhere((place) => place.id == id);
   }
 
-  void addPlace(
+  Future<void> addPlace(
     String pickedTitle,
     File pickedImage,
     PlaceLocation pickedLocation,
@@ -24,9 +25,10 @@ class NicePlaces with ChangeNotifier {
     final address = await LocationHelper.getPlaceAddress(
         pickedLocation.latitude, pickedLocation.longitude);
     final updatedLocation = PlaceLocation(
-        latitude: pickedLocation.latitude,
-        longitude: pickedLocation.longitude,
-        address: address);
+      latitude: pickedLocation.latitude,
+      longitude: pickedLocation.longitude,
+      address: address,
+    );
     final newPlace = Place(
       id: DateTime.now().toString(),
       image: pickedImage,
@@ -35,7 +37,7 @@ class NicePlaces with ChangeNotifier {
     );
     _items.add(newPlace);
     notifyListeners();
-    DBHelper.insert('places', {
+    DBHelper.insert('user_places', {
       'id': newPlace.id,
       'title': newPlace.title,
       'image': newPlace.image.path,
@@ -46,7 +48,7 @@ class NicePlaces with ChangeNotifier {
   }
 
   Future<void> fetchAndSetPlaces() async {
-    final dataList = await DBHelper.getData('places');
+    final dataList = await DBHelper.getData('user_places');
     _items = dataList
         .map(
           (item) => Place(

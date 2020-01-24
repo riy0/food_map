@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 import '../helpers/location_helper.dart';
 import '../screens/map_screen.dart';
@@ -49,7 +49,6 @@ class _LocationInputState extends State<LocationInput> {
     if (selectedLocation == null) {
       return;
     }
-
     _showPreview(selectedLocation.latitude, selectedLocation.longitude);
     widget.onSelectPlace(selectedLocation.latitude, selectedLocation.longitude);
   }
@@ -67,7 +66,7 @@ class _LocationInputState extends State<LocationInput> {
           ),
           child: _previewImageUrl == null
               ? Text(
-                  "no location",
+                  'No Location Chosen',
                   textAlign: TextAlign.center,
                 )
               : Image.network(
@@ -83,7 +82,7 @@ class _LocationInputState extends State<LocationInput> {
               icon: Icon(
                 Icons.location_on,
               ),
-              label: Text('current location'),
+              label: Text('Current Location'),
               textColor: Theme.of(context).primaryColor,
               onPressed: _getCurrentUserLocation,
             ),
@@ -91,12 +90,12 @@ class _LocationInputState extends State<LocationInput> {
               icon: Icon(
                 Icons.map,
               ),
-              label: Text('select location'),
+              label: Text('Select on Map'),
               textColor: Theme.of(context).primaryColor,
               onPressed: _selectOnMap,
-            )
+            ),
           ],
-        )
+        ),
       ],
     );
   }

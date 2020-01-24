@@ -30,7 +30,7 @@ class PlacesListScreen extends StatelessWidget {
               )
             : Consumer<NicePlaces>(
                 child: Center(
-                  child: Text('start adding places'),
+                  child: const Text('Got no places yet, start adding some!'),
                 ),
                 builder: (ctx, nicePlaces, ch) => nicePlaces.items.length <= 0
                     ? ch

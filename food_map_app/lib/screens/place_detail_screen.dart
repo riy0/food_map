@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/screens/map_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/nice_places.dart';
+import './map_screen.dart';
 
 class PlaceDetailScreen extends StatelessWidget {
   static const routeName = '/place-detail';
@@ -27,9 +27,7 @@ class PlaceDetailScreen extends StatelessWidget {
               width: double.infinity,
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: 10),
           Text(
             selectedPlace.location.address,
             textAlign: TextAlign.center,
@@ -40,16 +38,18 @@ class PlaceDetailScreen extends StatelessWidget {
           ),
           SizedBox(height: 10),
           FlatButton(
-            child: Text('View Map'),
+            child: Text('View on Map'),
             textColor: Theme.of(context).primaryColor,
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                fullscreenDialog: true,
-                builder: (ctx) => MapScreen(
-                  initialLocation: selectedPlace.location,
-                  isSelecting: false,
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  fullscreenDialog: true,
+                  builder: (ctx) => MapScreen(
+                    initialLocation: selectedPlace.location,
+                    isSelecting: false,
+                  ),
                 ),
-              ));
+              );
             },
           ),
         ],
