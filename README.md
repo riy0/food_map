@@ -2,7 +2,9 @@
 
 ## description
 This is an app.
+
 お店とかを写真と一緒に保存出来ます.
+
 RailsでWeb, Flutterでモバイルを作りました 
 
 
